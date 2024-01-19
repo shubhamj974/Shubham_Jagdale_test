@@ -1,0 +1,163 @@
+<mat-card class="mat-elevation-z5 card">
+  <form [formGroup]="UserForm" (ngSubmit)="onUserForm()">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="first_name"
+        id="first_name"
+        placeholder="Ex. shubham"
+      />
+
+      <mat-error *ngIf="f['first_name'].hasError('required')">
+        First Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="last_name"
+        id="last_name"
+        placeholder="Ex. jagdale"
+      />
+
+      <mat-error *ngIf="f['last_name'].hasError('required')">
+        Last Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        id="email"
+        placeholder="Ex. pat@example.com"
+      />
+
+      <mat-error *ngIf="f['email'].hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="f['email'].hasError('pattern')">
+        Invalid <strong>Email</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Phone</mat-label>
+      <input
+        type="number"
+        matInput
+        formControlName="phone"
+        id="phone"
+        placeholder="Ex. 7350940365"
+      />
+
+      <mat-error *ngIf="f['phone'].hasError('required')">
+        Phone is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Company</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="company_name"
+        id="company"
+        placeholder="Ex. Adborn Solution"
+      />
+
+      <mat-error *ngIf="f['company_name'].hasError('required')">
+        Company is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      formControlName="gender"
+    >
+      <mat-label class="mr-2">Gender</mat-label>
+      <mat-radio-button
+        class="example-radio-button mb-3"
+        *ngFor="let gen of genderInfo"
+        [id]="gen"
+        [value]="gen"
+      >
+        {{ gen }}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field class="example-full-width" color="accent" appearance="fill">
+      <mat-label>DOB</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="DOB" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error> DOB is <strong>required</strong> </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input
+        type="password"
+        matInput
+        formControlName="password"
+        id="password"
+      />
+
+      <mat-error> Password is <strong>required</strong> </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Confirm your password</mat-label>
+      <input
+        type="password"
+        matInput
+        formControlName="confirm_password"
+        id="confirm_password"
+      />
+
+      <mat-error>Confirm password is <strong>required</strong> </mat-error>
+    </mat-form-field>
+
+    <div class="text-right">
+      <button
+        [disabled]="UserForm.invalid"
+        mat-raised-button
+        class="mr-2"
+        *ngIf="isBtnShow"
+        type="submit"
+        color="primary"
+      >
+        Register
+      </button>
+
+      <button
+        mat-raised-button
+        class="mr-2"
+        *ngIf="!isBtnShow"
+        (click)="onUpdateUser()"
+        type="button"
+        color="primary"
+      >
+        Update User
+      </button>
+
+      <button
+        mat-raised-button
+        type="button"
+        color="accent"
+        (click)="onCancel()"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</mat-card>

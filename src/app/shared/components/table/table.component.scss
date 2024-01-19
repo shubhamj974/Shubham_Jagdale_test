@@ -1,0 +1,25 @@
+table {
+  width: 100%;
+  .mat-header-cell {
+    font-size: 16px;
+  }
+
+  .mat-column-position {
+    width: 32px;
+    padding-right: 24px;
+    text-align: center;
+  }
+
+  .mat-column-title {
+    padding-left: 16px;
+  }
+
+  .mat-column-action {
+    text-align: center;
+    font-weight: bold;
+  }
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 50%;
+}
